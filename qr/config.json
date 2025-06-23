@@ -1,1 +1,507 @@
+{
+  "app_name": "My Cool App",
+  "package_name": "com.app.one",
+  "config_version": "1.4.0",
+  "last_updated": "2025-06-23T12:00:00Z",
+  "environment": "production",
+  
+  "app_lifecycle": {
+    "force_update": {
+      "enabled": true,
+      "min_version": "2.0.0",
+      "grace_period_days": 7,
+      "update_message": "Please update to continue using the app",
+      "blocking": false
+    },
+    "maintenance": {
+      "enabled": false,
+      "start_time": "2025-06-24T02:00:00Z",
+      "end_time": "2025-06-24T04:00:00Z",
+      "message": "App is under maintenance. Please try again later."
+    }
+  },
 
+  "targeting": {
+    "countries": [
+      {
+        "name": "Bangladesh",
+        "code": "BD",
+        "language": "bn",
+        "currency": "BDT",
+        "ads_enabled": true,
+        "ad_priority": "high",
+        "premium_pricing_tier": "low",
+        "preferred_networks": ["admob", "facebook", "unity"],
+        "gdpr_required": false
+      },
+      {
+        "name": "Germany",
+        "code": "DE",
+        "language": "de", 
+        "currency": "EUR",
+        "ads_enabled": true,
+        "ad_priority": "medium",
+        "premium_pricing_tier": "standard",
+        "preferred_networks": ["admob", "facebook", "ironsource"],
+        "gdpr_required": true
+      },
+      {
+        "name": "United States",
+        "code": "US",
+        "language": "en",
+        "currency": "USD",
+        "ads_enabled": true,
+        "ad_priority": "high",
+        "premium_pricing_tier": "premium",
+        "preferred_networks": ["admob", "facebook", "applovin"],
+        "gdpr_required": false
+      },
+      {
+        "name": "India",
+        "code": "IN",
+        "language": "en",
+        "currency": "INR",
+        "ads_enabled": true,
+        "ad_priority": "high",
+        "premium_pricing_tier": "low",
+        "preferred_networks": ["admob", "unity", "inmobi"],
+        "gdpr_required": false
+      },
+      {
+        "name": "United Kingdom",
+        "code": "GB",
+        "language": "en",
+        "currency": "GBP",
+        "ads_enabled": true,
+        "ad_priority": "medium",
+        "premium_pricing_tier": "premium",
+        "preferred_networks": ["admob", "facebook", "chartboost"],
+        "gdpr_required": true
+      }
+    ]
+  },
+
+  "ads_config": {
+    "enabled_globally": true,
+    "test_mode": false,
+    "mediation_enabled": true,
+    "waterfall_optimization": true,
+    
+    "validation_rules": {
+      "check_premium_before_ads": true,
+      "check_country_restrictions": true,
+      "offline_grace_period_hours": 48,
+      "fallback_to_cache": true,
+      "respect_user_consent": true
+    },
+
+    "placement_rules": {
+      "show_ads_after_actions": 5,
+      "minimum_session_time_seconds": 30,
+      "skip_first_session": true,
+      "max_ads_per_session": 10,
+      "respect_battery_level": true,
+      "min_battery_percentage": 20
+    },
+
+    "ad_networks": {
+      "admob": {
+        "enabled": true,
+        "priority": 1,
+        "timeout_seconds": 10,
+        "countries": ["BD", "DE", "US", "IN", "GB", "CA", "AU", "FR", "IT", "ES"],
+        "ad_units": {
+          "banner": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": false,
+            "android_id": "YOUR_ADMOB_BANNER_ANDROID_ID",
+            "ios_id": "YOUR_ADMOB_BANNER_IOS_ID",
+            "test_android_id": "ca-app-pub-3940256099942544/6300978111",
+            "test_ios_id": "ca-app-pub-3940256099942544/2934735716",
+            "positions": ["top", "bottom"],
+            "refresh_rate_seconds": 30,
+            "auto_refresh": true,
+            "size": "smart_banner"
+          },
+          "interstitial": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": true,
+            "android_id": "YOUR_ADMOB_INTERSTITIAL_ANDROID_ID",
+            "ios_id": "YOUR_ADMOB_INTERSTITIAL_IOS_ID",
+            "test_android_id": "ca-app-pub-3940256099942544/1033173712",
+            "test_ios_id": "ca-app-pub-3940256099942544/4411468910",
+            "frequency_free_users": 3,
+            "frequency_trial_users": 5,
+            "frequency_premium_users": 0,
+            "cooldown_minutes": 2,
+            "trigger_events": ["level_complete", "feature_unlock", "app_background", "action_limit_reached"]
+          },
+          "rewarded": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": true,
+            "show_for_trial_users": true,
+            "android_id": "YOUR_ADMOB_REWARDED_ANDROID_ID",
+            "ios_id": "YOUR_ADMOB_REWARDED_IOS_ID",
+            "test_android_id": "ca-app-pub-3940256099942544/5224354917",
+            "test_ios_id": "ca-app-pub-3940256099942544/1712485313",
+            "daily_limit_free": 5,
+            "daily_limit_trial": 8,
+            "daily_limit_premium": 10,
+            "rewards": {
+              "coins": 100,
+              "extra_actions": 5,
+              "temporary_premium_minutes": 30,
+              "remove_ads_minutes": 60
+            }
+          },
+          "native": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": true,
+            "android_id": "YOUR_ADMOB_NATIVE_ANDROID_ID",
+            "ios_id": "YOUR_ADMOB_NATIVE_IOS_ID",
+            "test_android_id": "ca-app-pub-3940256099942544/2247696110",
+            "test_ios_id": "ca-app-pub-3940256099942544/3986624511",
+            "templates": ["small", "medium", "large"],
+            "content_integration": true,
+            "auto_refresh": false
+          }
+        }
+      },
+
+      "facebook": {
+        "enabled": true,
+        "priority": 2,
+        "timeout_seconds": 12,
+        "countries": ["BD", "DE", "US", "IN", "GB", "CA", "AU", "FR", "IT", "ES"],
+        "ad_units": {
+          "banner": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": false,
+            "placement_id": "YOUR_FACEBOOK_BANNER_PLACEMENT_ID",
+            "test_placement_id": "IMG_16_9_APP_INSTALL#YOUR_PLACEMENT_ID",
+            "positions": ["top", "bottom"],
+            "refresh_rate_seconds": 30,
+            "auto_refresh": true
+          },
+          "interstitial": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": true,
+            "placement_id": "YOUR_FACEBOOK_INTERSTITIAL_PLACEMENT_ID",
+            "test_placement_id": "IMG_16_9_APP_INSTALL#YOUR_PLACEMENT_ID",
+            "frequency_free_users": 3,
+            "frequency_trial_users": 5,
+            "cooldown_minutes": 2
+          },
+          "rewarded": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": true,
+            "show_for_trial_users": true,
+            "placement_id": "YOUR_FACEBOOK_REWARDED_PLACEMENT_ID",
+            "test_placement_id": "VID_HD_16_9_46S_APP_INSTALL#YOUR_PLACEMENT_ID",
+            "daily_limit_free": 5,
+            "daily_limit_trial": 8,
+            "daily_limit_premium": 10
+          },
+          "native": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": true,
+            "placement_id": "YOUR_FACEBOOK_NATIVE_PLACEMENT_ID",
+            "test_placement_id": "IMG_16_9_APP_INSTALL#YOUR_PLACEMENT_ID",
+            "templates": ["small", "medium", "large"]
+          }
+        }
+      },
+
+      "unity": {
+        "enabled": true,
+        "priority": 3,
+        "timeout_seconds": 15,
+        "countries": ["BD", "IN", "PK", "LK", "NP", "MY", "TH", "VN"],
+        "game_id_android": "YOUR_UNITY_ANDROID_GAME_ID",
+        "game_id_ios": "YOUR_UNITY_IOS_GAME_ID",
+        "ad_units": {
+          "banner": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": false,
+            "placement_id": "banner",
+            "test_placement_id": "TestBanner",
+            "positions": ["bottom"],
+            "refresh_rate_seconds": 45
+          },
+          "interstitial": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": true,
+            "placement_id": "video",
+            "test_placement_id": "TestInterstitial",
+            "frequency_free_users": 4,
+            "cooldown_minutes": 3
+          },
+          "rewarded": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": true,
+            "show_for_trial_users": true,
+            "placement_id": "rewardedVideo",
+            "test_placement_id": "TestRewardedVideo",
+            "daily_limit_free": 6,
+            "daily_limit_trial": 9,
+            "daily_limit_premium": 12
+          }
+        }
+      },
+
+      "ironsource": {
+        "enabled": true,
+        "priority": 4,
+        "timeout_seconds": 12,
+        "countries": ["DE", "US", "GB", "CA", "AU", "FR", "IT", "ES"],
+        "app_key_android": "YOUR_IRONSOURCE_ANDROID_KEY",
+        "app_key_ios": "YOUR_IRONSOURCE_IOS_KEY",
+        "test_app_key": "85460dcd",
+        "ad_units": {
+          "banner": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": false,
+            "positions": ["bottom"],
+            "refresh_rate_seconds": 30
+          },
+          "interstitial": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": true,
+            "frequency_free_users": 3,
+            "cooldown_minutes": 2
+          },
+          "rewarded": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": true,
+            "show_for_trial_users": true,
+            "daily_limit_free": 5,
+            "daily_limit_trial": 8,
+            "daily_limit_premium": 10
+          }
+        }
+      },
+
+      "applovin": {
+        "enabled": true,
+        "priority": 5,
+        "timeout_seconds": 10,
+        "countries": ["US", "CA", "GB", "AU", "DE", "FR"],
+        "sdk_key": "YOUR_APPLOVIN_SDK_KEY",
+        "ad_units": {
+          "banner": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": false,
+            "ad_unit_id": "YOUR_APPLOVIN_BANNER_ID",
+            "test_ad_unit_id": "YOUR_TEST_BANNER_AD_UNIT_ID",
+            "positions": ["bottom"],
+            "refresh_rate_seconds": 25
+          },
+          "interstitial": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": true,
+            "ad_unit_id": "YOUR_APPLOVIN_INTERSTITIAL_ID",
+            "test_ad_unit_id": "YOUR_TEST_INTERSTITIAL_AD_UNIT_ID",
+            "frequency_free_users": 3,
+            "cooldown_minutes": 2
+          },
+          "rewarded": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": true,
+            "show_for_trial_users": true,
+            "ad_unit_id": "YOUR_APPLOVIN_REWARDED_ID",
+            "test_ad_unit_id": "YOUR_TEST_REWARDED_AD_UNIT_ID",
+            "daily_limit_free": 5,
+            "daily_limit_trial": 8,
+            "daily_limit_premium": 10
+          }
+        }
+      },
+
+      "chartboost": {
+        "enabled": true,
+        "priority": 6,
+        "timeout_seconds": 15,
+        "countries": ["US", "GB", "CA", "AU"],
+        "app_id_android": "YOUR_CHARTBOOST_ANDROID_APP_ID",
+        "app_id_ios": "YOUR_CHARTBOOST_IOS_APP_ID",
+        "app_signature_android": "YOUR_CHARTBOOST_ANDROID_SIGNATURE",
+        "app_signature_ios": "YOUR_CHARTBOOST_IOS_SIGNATURE",
+        "test_app_id": "4f21c409cd1cb2fb7000001b",
+        "test_app_signature": "92e2de2fd7070327bdeb54c15a5295309c6fcd2d",
+        "ad_units": {
+          "interstitial": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": true,
+            "frequency_free_users": 2,
+            "cooldown_minutes": 3
+          },
+          "rewarded": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": true,
+            "show_for_trial_users": true,
+            "daily_limit_free": 4,
+            "daily_limit_trial": 7,
+            "daily_limit_premium": 9
+          }
+        }
+      },
+
+      "inmobi": {
+        "enabled": true,
+        "priority": 7,
+        "timeout_seconds": 12,
+        "countries": ["IN", "BD", "PK", "LK", "NP"],
+        "account_id": "YOUR_INMOBI_ACCOUNT_ID",
+        "test_account_id": "4028cba631d63df10131e1d3191d0035",
+        "ad_units": {
+          "banner": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": false,
+            "placement_id": "YOUR_INMOBI_BANNER_PLACEMENT",
+            "test_placement_id": "1234567890",
+            "positions": ["bottom"],
+            "refresh_rate_seconds": 40
+          },
+          "interstitial": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": false,
+            "show_for_trial_users": true,
+            "placement_id": "YOUR_INMOBI_INTERSTITIAL_PLACEMENT",
+            "test_placement_id": "1234567891",
+            "frequency_free_users": 4,
+            "cooldown_minutes": 3
+          },
+          "rewarded": {
+            "enabled": true,
+            "show_for_free_users": true,
+            "show_for_premium_users": true,
+            "show_for_trial_users": true,
+            "placement_id": "YOUR_INMOBI_REWARDED_PLACEMENT",
+            "test_placement_id": "1234567892",
+            "daily_limit_free": 6,
+            "daily_limit_trial": 9,
+            "daily_limit_premium": 12
+          }
+        }
+      }
+    },
+
+    "country_specific_settings": {
+      "BD": {
+        "preferred_networks": ["admob", "facebook", "unity"],
+        "ad_priority": "high",
+        "banner_refresh_rate": 45,
+        "interstitial_frequency_multiplier": 1.2,
+        "rewarded_multiplier": 1.0
+      },
+      "DE": {
+        "preferred_networks": ["admob", "facebook", "ironsource"],
+        "ad_priority": "medium",
+        "banner_refresh_rate": 30,
+        "interstitial_frequency_multiplier": 0.8,
+        "rewarded_multiplier": 1.2
+      },
+      "US": {
+        "preferred_networks": ["admob", "facebook", "applovin"],
+        "ad_priority": "high",
+        "banner_refresh_rate": 25,
+        "interstitial_frequency_multiplier": 1.0,
+        "rewarded_multiplier": 1.5
+      },
+      "IN": {
+        "preferred_networks": ["admob", "unity", "inmobi"],
+        "ad_priority": "high",
+        "banner_refresh_rate": 40,
+        "interstitial_frequency_multiplier": 1.1,
+        "rewarded_multiplier": 1.0
+      },
+      "GB": {
+        "preferred_networks": ["admob", "facebook", "chartboost"],
+        "ad_priority": "medium",
+        "banner_refresh_rate": 30,
+        "interstitial_frequency_multiplier": 0.9,
+        "rewarded_multiplier": 1.3
+      }
+    },
+
+    "fallback_networks": ["admob", "facebook", "unity"]
+  },
+
+  "features": {
+    "offline_mode": {
+      "enabled": true,
+      "cache_duration_hours": 72,
+      "sync_on_connection": true
+    },
+    "dark_mode": {
+      "enabled": true,
+      "auto_switch": false,
+      "follow_system": true
+    },
+    "multi_language": {
+      "enabled": true,
+      "supported_languages": ["en", "bn", "de", "hi", "es", "fr"],
+      "auto_detect": true
+    },
+    "user_preferences": {
+      "save_locally": true,
+      "cloud_sync": false,
+      "reset_option": true
+    }
+  },
+
+  "urls": {
+    "premium_config": "https://raw.githubusercontent.com/yourusername/yourrepo/main/config/premium_features.json",
+    "privacy_policy": "https://yourwebsite.com/privacy",
+    "terms_of_service": "https://yourwebsite.com/terms",
+    "support_email": "support@yourapp.com"
+  },
+
+  "emergency_controls": {
+    "kill_switch": {
+      "ads_enabled": true,
+      "features_enabled": true,
+      "force_update_enabled": true
+    },
+    "country_restrictions": {
+      "blocked_countries": ["BD"],
+      "restricted_features_countries": []
+    },
+    "rollback_version": "1.3.0"
+  }
+}
