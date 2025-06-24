@@ -21,6 +21,177 @@
     }
   },
 
+  "premium_system": {
+    "validation_method": "store_receipt_validation",
+    "check_frequency_hours": 24,
+    "offline_grace_period_hours": 48,
+    "retry_attempts": 3,
+    "auto_restore_on_startup": true,
+    "cache_validation_results": true
+  },
+
+  "subscription_products": [
+    {
+      "id": "monthly",
+      "android_product_id": "com.app.one.premium.monthly",
+      "ios_product_id": "com.app.one.premium.monthly",
+      "type": "auto_renewable_subscription",
+      "billing_period": "P1M",
+      "trial_period": "P7D",
+      "price_usd": 4.99,
+      "localized_pricing": {
+        "BD": { "price": 499, "currency": "BDT" },
+        "DE": { "price": 4.99, "currency": "EUR" },
+        "US": { "price": 4.99, "currency": "USD" },
+        "IN": { "price": 399, "currency": "INR" },
+        "GB": { "price": 4.99, "currency": "GBP" }
+      }
+    },
+    {
+      "id": "yearly", 
+      "android_product_id": "com.app.one.premium.yearly",
+      "ios_product_id": "com.app.one.premium.yearly",
+      "type": "auto_renewable_subscription", 
+      "billing_period": "P1Y",
+      "trial_period": "P7D",
+      "price_usd": 39.99,
+      "discount_percentage": 33,
+      "localized_pricing": {
+        "BD": { "price": 3999, "currency": "BDT" },
+        "DE": { "price": 39.99, "currency": "EUR" },
+        "US": { "price": 39.99, "currency": "USD" },
+        "IN": { "price": 2999, "currency": "INR" },
+        "GB": { "price": 39.99, "currency": "GBP" }
+      },
+      "popular": true
+    },
+    {
+      "id": "lifetime",
+      "android_product_id": "com.app.one.premium.lifetime", 
+      "ios_product_id": "com.app.one.premium.lifetime",
+      "type": "managed_product",
+      "billing_period": "one_time",
+      "price_usd": 99.99,
+      "localized_pricing": {
+        "BD": { "price": 9999, "currency": "BDT" },
+        "DE": { "price": 99.99, "currency": "EUR" },
+        "US": { "price": 99.99, "currency": "USD" },
+        "IN": { "price": 7499, "currency": "INR" },
+        "GB": { "price": 99.99, "currency": "GBP" }
+      },
+      "best_value": true
+    }
+  ],
+
+  "user_tiers": {
+    "free_user": {
+      "daily_actions_limit": 10,
+      "features_enabled": [
+        "basic_feature_1",
+        "basic_feature_2",
+        "limited_export",
+        "basic_themes"
+      ],
+      "ads_enabled": true,
+      "ads_frequency_multiplier": 1.0,
+      "storage_limit_mb": 100,
+      "support_priority": "standard",
+      "watermark_on_exports": true
+    },
+    "trial_user": {
+      "daily_actions_limit": -1,
+      "features_enabled": "all_premium_features",
+      "ads_enabled": false,
+      "ads_frequency_multiplier": 0.0,
+      "storage_limit_mb": -1,
+      "support_priority": "high", 
+      "watermark_on_exports": false,
+      "trial_reminder_days": [5, 2, 1]
+    },
+    "premium_user": {
+      "daily_actions_limit": -1,
+      "features_enabled": [
+        "all_basic_features",
+        "premium_feature_1",
+        "premium_feature_2", 
+        "unlimited_export",
+        "advanced_analytics",
+        "custom_themes",
+        "offline_sync",
+        "priority_support",
+        "early_access_features",
+        "exclusive_content",
+        "advanced_filters",
+        "batch_operations",
+        "api_access"
+      ],
+      "ads_enabled": false,
+      "ads_frequency_multiplier": 0.0,
+      "storage_limit_mb": -1,
+      "support_priority": "premium",
+      "watermark_on_exports": false,
+      "exclusive_benefits": true
+    }
+  },
+
+  "trial_management": {
+    "duration_days": 7,
+    "auto_start_conditions": {
+      "on_first_premium_feature_attempt": true,
+      "on_daily_limit_reached": true,
+      "manual_activation": true
+    },
+    "features_during_trial": "premium_user",
+    "reminder_schedule": [
+      {
+        "day": 5,
+        "title": "2 Days Left",
+        "message": "Your premium trial expires in 2 days. Upgrade now to keep all features!"
+      },
+      {
+        "day": 6,
+        "title": "1 Day Left", 
+        "message": "Last chance! Your trial expires tomorrow."
+      }
+    ],
+    "trial_end_action": "show_upgrade_screen"
+  },
+
+  "upgrade_prompts": {
+    "triggers": [
+      {
+        "event": "daily_limit_reached",
+        "title": "Upgrade to Premium",
+        "message": "You've reached your daily limit of {limit} actions. Upgrade for unlimited access!",
+        "show_frequency_hours": 24,
+        "cta_button": "Upgrade Now"
+      },
+      {
+        "event": "premium_feature_locked",
+        "title": "Premium Feature",
+        "message": "This feature requires Premium subscription. Start your free trial!",
+        "show_frequency_hours": 12,
+        "cta_button": "Start Free Trial"
+      },
+      {
+        "event": "export_watermark",
+        "title": "Remove Watermark", 
+        "message": "Upgrade to Premium to export without watermarks.",
+        "show_frequency_hours": 6,
+        "cta_button": "Go Premium"
+      }
+    ],
+    "promotional_offers": [
+      {
+        "id": "new_user_discount",
+        "discount_percentage": 50,
+        "valid_for_days": 3,
+        "target_users": "new_installs",
+        "products": ["monthly", "yearly"]
+      }
+    ]
+  },
+
   "targeting": {
     "countries": [
       {
@@ -462,6 +633,48 @@
     "fallback_networks": ["admob", "facebook", "unity"]
   },
 
+  "subscription_management": {
+    "auto_renewal_reminders": true,
+    "cancellation_survey": {
+      "enabled": true,
+      "questions": [
+        "Too expensive",
+        "Not using enough",
+        "Missing features", 
+        "Technical issues",
+        "Other"
+      ]
+    },
+    "winback_offers": {
+      "enabled": true,
+      "discount_percentage": 25,
+      "offer_duration_days": 7
+    },
+    "family_sharing_supported": true
+  },
+
+  "feature_gates": {
+    "premium_features": [
+      {
+        "feature_id": "advanced_analytics",
+        "required_tier": "premium",
+        "fallback_message": "Upgrade to Premium for detailed analytics"
+      },
+      {
+        "feature_id": "batch_export",
+        "required_tier": "premium", 
+        "trial_allowed": true,
+        "fallback_message": "Export multiple items with Premium"
+      },
+      {
+        "feature_id": "custom_themes",
+        "required_tier": "premium",
+        "preview_allowed": true,
+        "fallback_message": "Unlock beautiful themes with Premium"
+      }
+    ]
+  },
+
   "features": {
     "offline_mode": {
       "enabled": true,
@@ -490,6 +703,19 @@
     "privacy_policy": "https://yourwebsite.com/privacy",
     "terms_of_service": "https://yourwebsite.com/terms",
     "support_email": "support@yourapp.com"
+  },
+
+  "analytics_events": {
+    "track_premium_events": [
+      "trial_started",
+      "trial_ended", 
+      "subscription_purchased",
+      "subscription_cancelled",
+      "upgrade_prompt_shown",
+      "upgrade_prompt_clicked",
+      "premium_feature_attempted",
+      "paywall_conversion"
+    ]
   },
 
   "emergency_controls": {
