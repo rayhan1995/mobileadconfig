@@ -287,7 +287,7 @@
             "show_for_free_users": true,
             "show_for_premium_users": false,
             "show_for_trial_users": false,
-            "android_id": "YOUR_ADMOB_BANNER_ANDROID_ID",
+            "android_id": "ca-app-pub-3940256099942544/6300978111",
             "ios_id": "YOUR_ADMOB_BANNER_IOS_ID",
             "test_android_id": "ca-app-pub-3940256099942544/6300978111",
             "test_ios_id": "ca-app-pub-3940256099942544/2934735716",
