@@ -720,7 +720,7 @@
 
   "emergency_controls": {
     "kill_switch": {
-      "ads_enabled": false,
+      "ads_enabled": true,
       "features_enabled": true,
       "force_update_enabled": true
     },
