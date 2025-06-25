@@ -277,7 +277,7 @@
 
     "ad_networks": {
       "admob": {
-        "enabled": true,
+        "enabled": false,
         "priority": 1,
         "timeout_seconds": 10,
         "countries": ["BD", "DE", "US", "IN", "GB", "CA", "AU", "FR", "IT", "ES"],
