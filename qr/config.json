@@ -720,12 +720,12 @@
 
   "emergency_controls": {
     "kill_switch": {
-      "ads_enabled": false,
+      "ads_enabled": true,
       "features_enabled": true,
       "force_update_enabled": true
     },
     "country_restrictions": {
-      "blocked_countries": ["BD"],
+      "blocked_countries": [],
       "restricted_features_countries": []
     },
     "rollback_version": "1.3.0"
